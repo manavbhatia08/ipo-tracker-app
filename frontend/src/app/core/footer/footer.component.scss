@@ -1,0 +1,24 @@
+.main-footer{
+    background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 0 2rem;
+  display: flex;
+  height:50px;
+  align-items: center;
+}
+
+.nav-bar {
+    display: flex;
+    // margin: 1rem 15rem 0 15rem;
+    justify-content:space-around;
+  //   align-items: center;
+  // margin-right: 10rem;
+    width: 100%;
+  }
+  
+  .main-logo{
+      margin-right: 1rem;
+      font-weight: bold;
+    font-size: 1.2rem;
+  //   color: #2e7d32;
+  }
