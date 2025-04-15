@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet,RouterModule } from '@angular/router';
 import { HeaderComponent } from './core/header/header.component';
 import { FooterComponent } from './core/footer/footer.component';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomeComponent } from './components/home/home.component';
+import { IpoTrackerComponent } from './components/ipo-tracker/ipo-tracker.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,HeaderComponent,FooterComponent,HomepageComponent],
+  imports: [RouterOutlet,RouterModule,HeaderComponent,FooterComponent,HomeComponent,IpoTrackerComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
