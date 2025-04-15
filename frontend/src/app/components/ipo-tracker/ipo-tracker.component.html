@@ -1,47 +1,70 @@
 <div class="ipo-container">
-    <h2>All IPOs</h2>
-  
-    <div class="filters">
-      <select>
-        <option value="">Sector</option>
-        <option>IT</option>
-        <option>Pharma</option>
-        <option>Auto</option>
-        <!-- add more sectors -->
-      </select>
-      <select>
-        <option value="">Status</option>
-        <option>Upcoming</option>
-        <option>Closed</option>
-      </select>
-      <input type="date" placeholder="Date Range" />
-      <input type="text" placeholder="Search..." class="search" />
-    </div>
-  
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Sector</th>
-          <th>Market Capitalization</th>
-          <th>Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let ipo of ipoData">
-          <td>{{ ipo.name }}</td>
-          <td>IT</td>
-          <td>{{ ipo.totalSharesValue }}</td>
-          <td><span class="badge expected" [ngClass]="ipo.status">{{ipo.status}}</span></td>
-        </tr>
-        <tr>
-          <td>LIC</td>
-          <td>Pharma</td>
-          <td>₹ 204-04-12</td>
-          <td><span class="badge closed">Closed</span></td>
-        </tr>
-        <!-- More rows -->
-      </tbody>
-    </table>
+  <h2>All IPOs</h2>
+
+  <div class="filters">
+    <select [(ngModel)]="selectedStatus" (change)="filterandSort()">
+      <option value="">All</option>
+      <option value="expected">expected</option>
+      <option value="filed">filed</option>
+      <option value="priced">priced</option>
+      <option value="withdrawn">withdrawn</option>
+    </select>
+    <label style="margin-left: 2rem">From:</label>
+    <input
+      type="date"
+      [(ngModel)]="fromDate"
+      placeholder="Date Range"
+      (change)="filterandSort()"
+    />
+    <label>To:</label>
+    <input
+      type="date"
+      [(ngModel)]="toDate"
+      placeholder="Date Range"
+      (change)="filterandSort()"
+    />
+    <input
+      type="text"
+      [(ngModel)]="searchtext"
+      placeholder="Search..."
+      class="search"
+      (input)="filterandSort()"
+      style="width: 300px"
+    />
   </div>
-  
+
+  <table>
+    <thead>
+      <tr>
+        <th (click)="toggleandSort('name')">
+          Name<span *ngIf="sortKey === 'name'">
+            {{ sortAsc ? "▲" : "▼" }}
+          </span>
+        </th>
+        <th (click)="toggleandSort('date')">
+          Date<span *ngIf="sortKey === 'date'">
+            {{ sortAsc ? "▲" : "▼" }}
+          </span>
+        </th>
+        <th>Market Capitalization</th>
+        <th (click)="toggleandSort('status')">
+          Status<span *ngIf="sortKey === 'status'">
+            {{ sortAsc ? "▲" : "▼" }}
+          </span>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let ipo of filteredData">
+        <td>{{ ipo.name }}</td>
+        <td>{{ ipo.date }}</td>
+        <td>{{ ipo.totalSharesValue | millionDollar }}</td>
+        <td>
+          <span class="badge expected" [ngClass]="ipo.status">{{
+            ipo.status
+          }}</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
