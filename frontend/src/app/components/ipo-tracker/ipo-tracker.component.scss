@@ -1,0 +1,74 @@
+.ipo-container {
+    padding: 2rem;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  h2 {
+    margin-bottom: 1rem;
+  }
+  
+  .filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .filters select,
+  .filters input {
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    min-width: 150px;
+  }
+  
+  .search {
+    margin-left: auto;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  thead {
+    background-color: #f9f9f9;
+  }
+  
+  th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  
+  .expected {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  .filed {
+    background-color: #DBEAFE;
+    color: #1E40AF;
+  }
+  
+  .withdrawn {
+    background-color: #FECACA;
+    color: #991B1B;
+  }
+  
+  .priced {
+    background-color: #FEF9C3;
+    color: #92400E;
+  }
+  

@@ -1,32 +1,20 @@
 const express = require('express');
-const axios=require('axios');
-require('dotenv').config();
-
+const ipoRoutes= require('./routes/ipoRoutes')
 const app = express();
-// Add this at top of your file
-console.log("🚀 Server star", new Date());
+const axios=require('axios');
+const cors= require('cors')
+
+app.use(cors());
 
 
-const finhub_api_key = process.env.FINHUB_API_KEY;
-const finhub_base_url = 'https://finnhub.io/api/v1';
 const PORT = 5000;
-console.log('FIN', finhub_api_key);
 
 // Routes
 app.get('/', (req, res) => {
-    res.send('We');
+    res.send('Welcome to the Stock API!');
 });
 
-app.get('/api/ipos', async (req, res) => {
-    try {
-        const response = await axios.get(`${finhub_base_url}/calendar/ipo?token=${finhub_api_key}`);
 
-        res.json(response.data);
-    } catch (error) {
-        console.error('Erro:', error);
-        res.status(500).json({ error: 'Failed to fetch IPO data' });
-    }
-})
 app.get('/test', async (req, res) => {
     const url = 'https://api.github.com';
     try {
@@ -36,6 +24,8 @@ app.get('/test', async (req, res) => {
       res.status(500).json({ error: err.message });
     }
   });
+
+  app.use('', ipoRoutes);
 
 
 // Start the server

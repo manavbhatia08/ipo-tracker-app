@@ -1,1 +1,47 @@
-<p>ipo-tracker works!</p>
+<div class="ipo-container">
+    <h2>All IPOs</h2>
+  
+    <div class="filters">
+      <select>
+        <option value="">Sector</option>
+        <option>IT</option>
+        <option>Pharma</option>
+        <option>Auto</option>
+        <!-- add more sectors -->
+      </select>
+      <select>
+        <option value="">Status</option>
+        <option>Upcoming</option>
+        <option>Closed</option>
+      </select>
+      <input type="date" placeholder="Date Range" />
+      <input type="text" placeholder="Search..." class="search" />
+    </div>
+  
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Sector</th>
+          <th>Market Capitalization</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ipo of ipoData">
+          <td>{{ ipo.name }}</td>
+          <td>IT</td>
+          <td>{{ ipo.totalSharesValue }}</td>
+          <td><span class="badge expected" [ngClass]="ipo.status">{{ipo.status}}</span></td>
+        </tr>
+        <tr>
+          <td>LIC</td>
+          <td>Pharma</td>
+          <td>₹ 204-04-12</td>
+          <td><span class="badge closed">Closed</span></td>
+        </tr>
+        <!-- More rows -->
+      </tbody>
+    </table>
+  </div>
+  

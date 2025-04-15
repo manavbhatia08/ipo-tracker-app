@@ -7,11 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class IpoAPIService {
 
-  private apiUrl= "https://finnhub.io/api/v1";
+  private apiUrl= "http://localhost:5000";
 
   constructor( private http : HttpClient) { }
 
   getIPOs():Observable<any>{
-    return this.http.get<any>(`${this.apiUrl}/calendar/ipo`)
+    return this.http.get<any>(`${this.apiUrl}/ipos`)
   }
 }
