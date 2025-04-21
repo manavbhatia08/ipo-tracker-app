@@ -3,10 +3,12 @@ import { IpoAPIService } from '../../services/ipo-api.service';
 import { CommonModule } from '@angular/common';
 import { millionDollarPipe } from '../../core/pipes/million-dollar.pipe';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ipo-tracker',
-  imports: [CommonModule, millionDollarPipe, FormsModule],
+  imports: [CommonModule, millionDollarPipe, FormsModule,RouterModule],
   templateUrl: './ipo-tracker.component.html',
   styleUrl: './ipo-tracker.component.scss',
 })
@@ -70,7 +72,7 @@ export class IpoTrackerComponent {
     this.filterandSort();
   }
 
-  constructor(private ipoService: IpoAPIService) {}
+  constructor(private ipoService: IpoAPIService,private router: Router) {}
 
   ngOnInit(): void {
     this.ipoService.getIPOs().subscribe((data) => {
@@ -78,5 +80,9 @@ export class IpoTrackerComponent {
       console.log(this.ipoData);
       this.filteredData = this.ipoData;
     });
+  }
+
+  goToDetails(ipo:any){
+    this.router.navigate(['/ipo', ipo.name.replace(/\s+/g, '-')], { state: { ipo } });
   }
 }

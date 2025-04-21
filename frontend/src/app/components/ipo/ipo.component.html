@@ -1,0 +1,32 @@
+<div class="ipo-container">
+    <h2>{{ ipo.name }}</h2>
+    <p class="symbol">Symbol: {{ ipo.symbol }}</p>
+  
+    <table>
+      <tr>
+        <td>Date:</td>
+        <td>{{ ipo.date }}</td>
+      </tr>
+      <tr>
+        <td>Exchange:</td>
+        <td>{{ ipo.exchange }}</td>
+      </tr>
+      <tr>
+        <td>Number of Shares:</td>
+        <td>{{ ipo.numberOfShares | number}}</td>
+      </tr>
+      <tr>
+        <td>Price Range:</td>
+        <td>{{ ipo.price }}</td>
+      </tr>
+      <tr>
+        <td>Total Value:</td>
+        <td>{{ ipo.totalSharesValue | millionDollar }}</td>
+      </tr>
+      <tr>
+        <td>Status:</td>
+        <td>{{ ipo.status }}</td>
+      </tr>
+    </table>
+  </div>
+  

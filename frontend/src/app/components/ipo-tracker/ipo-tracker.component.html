@@ -55,7 +55,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let ipo of filteredData">
+      <tr  (click)="goToDetails(ipo)" class="ipoDetail"  *ngFor="let ipo of filteredData">
         <td>{{ ipo.name }}</td>
         <td>{{ ipo.date }}</td>
         <td>{{ ipo.totalSharesValue | millionDollar }}</td>

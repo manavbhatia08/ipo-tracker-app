@@ -1,5 +1,6 @@
 const express = require('express');
 const ipoRoutes= require('./routes/ipoRoutes')
+const stockRoutes= require('./routes/stockRoutes')
 const app = express();
 const axios=require('axios');
 const cors= require('cors')
@@ -8,6 +9,7 @@ app.use(cors());
 
 
 const PORT = 5000;
+
 
 // Routes
 app.get('/', (req, res) => {
@@ -26,6 +28,7 @@ app.get('/test', async (req, res) => {
   });
 
   app.use('', ipoRoutes);
+  app.use('', stockRoutes);
 
 
 // Start the server

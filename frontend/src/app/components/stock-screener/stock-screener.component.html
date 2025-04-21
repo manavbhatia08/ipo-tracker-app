@@ -1,0 +1,45 @@
+<div class="stock-container">
+  
+      <h2>Stocks</h2>
+  
+      <div class="filters">
+        <select [(ngModel)]="selectedSector" (change)="filterAndSort()">
+            <option value="">All</option>
+          <option *ngFor="let sector of listOfSectors" [value]="sector">{{sector}}</option>
+        </select>
+        <input
+      type="text"
+      [(ngModel)]="searchText"
+      placeholder="Search..."
+      class="search"
+      (input)="filterAndSort()"
+      style="width: 300px"
+    />
+      </div>
+  
+      <table>
+        <thead>
+          <tr>
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Market Capitalization</th>
+            <th>Final Dividend</th>
+            <th>Sector</th>
+            <th>Market Beta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stock of filteredData">
+            <td>{{stock.symbol.split('.')[0]}}</td>
+            <td>{{stock.companyName}}</td>
+            <td>{{stock.price}}</td>
+            <td>{{stock.marketCap | rupee}}</td>
+            <td>{{stock.lastAnnualDividend}}</td>
+            <td>{{stock.sector}}</td>
+            <td>{{stock.beta}}</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  
