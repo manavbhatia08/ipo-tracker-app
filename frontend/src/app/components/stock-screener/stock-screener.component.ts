@@ -3,12 +3,13 @@ import { StockApiService } from '../../services/stock-api.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { RupeePipe } from '../../core/pipes/rupee.pipe';
 
 @Component({
   selector: 'app-stock-screener',
   standalone: true,
-  imports: [CommonModule,FormsModule,RupeePipe],
+  imports: [CommonModule,FormsModule,RupeePipe,RouterModule],
   templateUrl: './stock-screener.component.html',
   styleUrl: './stock-screener.component.scss',
 })
@@ -918,5 +919,9 @@ export class StockScreenerComponent {
     //   console.log(this.stockData);
     // });
     console.log(this.listOfSectors);
+  }
+
+  goToStock(stock:any){
+    this.router.navigate(['/stocks', stock.companyName.replace(/\s+/g, '-')], { state: { stock} });
   }
 }

@@ -31,7 +31,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let stock of filteredData">
-            <td>{{stock.symbol.split('.')[0]}}</td>
+            <td><span class="stock-symbol" (click)="goToStock(stock)">{{stock.symbol.split('.')[0]}}</span></td>
             <td>{{stock.companyName}}</td>
             <td>{{stock.price}}</td>
             <td>{{stock.marketCap | rupee}}</td>
